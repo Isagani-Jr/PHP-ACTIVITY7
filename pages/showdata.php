@@ -31,7 +31,6 @@ session_start();
                         </div>
                         <div class='card-body'>
                             <?php
-                            // Display status messages based on the URL parameter
                             if (isset($_GET['status'])) {
                                 if ($_GET['status'] == 'deleted') {
                                     echo "<div id='success-message' class='alert alert-success'>Student data deleted successfully.</div>";
@@ -58,7 +57,6 @@ session_start();
                                 </thead>
                                 <tbody>
                                     <?php
-                                    // Check if there are students in the session
                                     if (isset($_SESSION['students']) && count($_SESSION['students']) > 0) {
                                         foreach ($_SESSION['students'] as $index => $student) {
                                             echo "<tr>";
@@ -68,7 +66,6 @@ session_start();
                                             echo "<td>" . htmlspecialchars($student['college']) . "</td>";
                                             echo "<td>" . htmlspecialchars($student['course']) . "</td>";
                                             echo "<td>" . htmlspecialchars($student['campus']) . "</td>";
-                                            // Edit and Delete buttons with confirmation prompt for delete
                                             echo "<td><a href='editdata.php?student_id=$index' class='btn btn-warning btn-sm'>Edit</a> ";
                                             echo "<a href='deletedata.php?student_id=$index' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete this student?\");'>Delete</a></td>";
                                             echo "</tr>";
@@ -79,13 +76,13 @@ session_start();
                                     ?>
                                 </tbody>
                             </table>
-                        </div> <!-- End card-body -->
-                    </div> <!-- End card -->
-                </div> <!-- End container-fluid -->
+                        </div>
+                    </div>
+                </div>
             </main>
             <?php include('../layout/footer.php'); ?>
-        </div> <!-- End layoutSidenav_content -->
-    </div> <!-- End layoutSidenav -->
+        </div>
+    </div>
 
     <?php include('../layout/script.php'); ?>
 </body>

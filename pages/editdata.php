@@ -1,19 +1,15 @@
 <?php
 session_start();
 
-// Check if the student_id is set in the URL
 if (!isset($_GET['student_id']) || !isset($_SESSION['students'][$_GET['student_id']])) {
     header("Location: showdata.php");
     exit();
 }
 
-// Get the student data for editing
 $student_id = $_GET['student_id'];
 $student = $_SESSION['students'][$student_id];
 
-// Handle form submission for updating student data
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Update student data from form input
     $_SESSION['students'][$student_id]['name'] = $_POST['name'];
     $_SESSION['students'][$student_id]['age'] = $_POST['age'];
     $_SESSION['students'][$student_id]['gender'] = $_POST['gender'];
@@ -21,7 +17,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_SESSION['students'][$student_id]['course'] = $_POST['course'];
     $_SESSION['students'][$student_id]['campus'] = $_POST['campus'];
 
-    // Redirect back to showdata.php with a success message
     header("Location: showdata.php?status=updated");
     exit();
 }
@@ -52,7 +47,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             Edit Student Information
                         </div>
                         <div class="card-body">
-                            <!-- Form for editing student data -->
                             <form action="" method="post">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -102,18 +96,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     </div>
                                 </div>
 
-                                <!-- Submit button -->
                                 <button type="submit" class='btn btn-primary'>Update Student</button>
 
                             </form>
 
-                        </div> <!-- End card-body -->
-                    </div> <!-- End card -->
-                </div> <!-- End container-fluid -->
+                        </div>
+                    </div>
+                </div>
             </main>
             <?php include('../layout/footer.php'); ?>
-        </div> <!-- End layoutSidenav_content -->
-    </div> <!-- End layoutSidenav -->
+        </div>
+    </div>
 
     <?php include('../layout/script.php'); ?>
 </body>

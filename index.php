@@ -5,18 +5,14 @@ $email = isset($_POST['email']) ? $_POST['email'] : "";
 $password = isset($_POST['password']) ? $_POST['password'] : "";
 $message = "";
 
-// Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($email) && empty($password)) {
-        // Display error message if both fields are empty
         $message = "<div class='alert alert-danger'>Please enter your email and password!</div>";
     } elseif ($email == "pazjr.isagani@marsu.edu.ph" && $password == "Password2023@@") {
-        // Successful login
         $_SESSION['email'] = $email;
         $_SESSION['password'] = $password;
         echo "<script>window.location.href='pages/dashboard.php';</script>";
     } else {
-        // Invalid credentials
         $message = "<div class='alert alert-danger'>Login Failed!</div>";
     }
 }
@@ -67,7 +63,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 </div>
                             </div>
 
-                            <!-- Optional: Display entered credentials (for debugging only) -->
                             <table class= "table table-striped">
                                 <tr>
                                     <td>Username</td>
@@ -98,9 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <!-- Custom Scripts -->
     <script src="js/scripts.js"></script>
 
 </body>
